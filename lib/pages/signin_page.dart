@@ -31,7 +31,7 @@ class SignupPage extends StatelessWidget {
                     filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                     child: Container(
                       width: 300,
-                      height: 330,
+                      height: 350,
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(20),
