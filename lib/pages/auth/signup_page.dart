@@ -1,12 +1,20 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:my_expense_app/components/auth_gradient_button.dart';
 import 'package:my_expense_app/components/auth_input_text_fields.dart';
 import 'package:my_expense_app/components/auth_password_textfield.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+class SignupPage extends StatefulWidget {
+  final void Function()? authPageToggle;
+  const SignupPage({super.key, this.authPageToggle});
+
+  @override
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +39,7 @@ class SignupPage extends StatelessWidget {
                     filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                     child: Container(
                       width: 300,
-                      height: 350,
+                      height: 330,
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(20),
@@ -47,7 +55,7 @@ class SignupPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Welcome,",
+                                  "Register,",
                                   style: TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.w600,
@@ -60,15 +68,18 @@ class SignupPage extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: [
-                                  const AuthInputTextField(
+                                  AuthInputTextField(
                                     labelText: "Phone",
-                                    hintText: "+9163......98",
+                                    hintText: "63......98",
                                     isObscure: false,
+                                    controller: phoneController,
+                                    keyboardType: TextInputType.phone,
                                   ),
                                   const SizedBox(height: 10),
-                                  const AuthPasswordTextField(
+                                  AuthPasswordTextField(
                                     labelText: "Password",
                                     hintText: "........",
+                                    controller: passwordController,
                                   ),
                                   const SizedBox(height: 5),
                                   Row(
@@ -89,25 +100,27 @@ class SignupPage extends StatelessWidget {
                                   Row(
                                     children: [
                                       const Text(
-                                        "Doesn't have an account? ",
+                                        "Already have an account? ",
                                         style: TextStyle(
                                           fontSize: 13,
                                         ),
                                       ),
                                       GestureDetector(
-                                          child: const Text(
-                                        "SignUp",
-                                        style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold,
+                                        onTap: widget.authPageToggle,
+                                        child: const Text(
+                                          "SignIn",
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ))
+                                      ),
                                     ],
                                   ),
                                   const SizedBox(height: 25),
                                   AuthGradientButton(
                                     onPressed: () {},
-                                    buttonText: "SignIn",
+                                    buttonText: "SignUp",
                                   )
                                 ],
                               ),

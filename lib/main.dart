@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_expense_app/pages/signin_page.dart';
+import 'package:my_expense_app/pages/auth/auth_page.dart';
 import 'package:my_expense_app/themes/dark_mode.dart';
 import 'package:my_expense_app/themes/light_theme.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightMode,
       darkTheme: darkMode,
-      home: const SignupPage(),
+      home: const AuthPage(),
     );
   }
 }
