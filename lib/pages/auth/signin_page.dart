@@ -17,9 +17,8 @@ class _SignInPageState extends State<SignInPage> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  String _phoneError = "xcfgvdxfdbgd djgd xjgd j gdjg dj gvfdjgv fxc hg";
-  String _passwordError =
-      "dgfsvfds fdsgfsdfgsdfvsdf sdgf sdfbsd fsdbf bsdf vsdgfvgsdf ";
+  String _phoneError = "";
+  String _passwordError = "";
 
   @override
   Widget build(BuildContext context) {
@@ -125,19 +124,25 @@ class _SignInPageState extends State<SignInPage> {
                                           ),
                                         ),
                                         GestureDetector(
-                                            onTap: widget.authPageToggle,
-                                            child: const Text(
-                                              "SignUp",
-                                              style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ))
+                                          onTap: widget.authPageToggle,
+                                          child: const Text(
+                                            "SignUp",
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ),
                                     const SizedBox(height: 25),
                                     AuthGradientButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        setState(() {
+                                          _phoneError = validatePhoneNumner(
+                                              phoneController.text);
+                                        });
+                                      },
                                       buttonText: "SignIn",
                                     )
                                   ],
